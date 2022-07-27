@@ -26,6 +26,8 @@ The package version is based on those on Yale HPC Farnam cluster.
   * Unlike the previoius section, the package versions DO matters. You should use the pytorch version that matched to the CUDA version you have on your system. See more details in [Installing Pytorch](https://pytorch.org/get-started/locally/)
 
 #### 4. Install tensorQTL
+* `mamba install xarray=0.17.0 -c conda-forge`
+   * It seems the newer version of xarray will not work (at least with the numpy version showed above).
 * `which pip`. Make sure we are using the pip under rpgQTL environment folder.
 * `pip install tensorqtl==1.0.5`
 * Compatability with later version of tensorqtl has NOT beed tested.
