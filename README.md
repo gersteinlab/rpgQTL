@@ -44,16 +44,16 @@ For details about the above files, see instruction in [tensorqtl](https://github
 `rpgQTL.run_independent`: similar to `tensorqtl.cis.map_independent`. Conduct the forward-backward run to get independent eQTLs.
 
 ### rpgQTL Parameters
-`l_window` (int; default 2000000):  
+- `l_window` (int; default 2000000):  
 The max boundary of cis-window. Only regions within this cis-window will be consider as valid regions. You should consider trans-eqtl calling methods if your interested SNPs are located outside of this window size.  
-`s_window` (int; default 0):  
+- `s_window` (int; default 0):  
 A fix cis-window for all genes that will always be included, even if they are not included in the rpg_df. Setting s_window to 1000000 and rpg_df to empty dataframe will be equivalent to the original cis-eqtl calling using tensorqtl with window=1000000.  
-`NonHiCType` ('remove', 'l_window' or 's_window'):  
+- `NonHiCType` ('remove', 'l_window' or 's_window'):  
 Different ways to deal with genes that have genotype and expression data, but no candidate regions.
-- 'remove': The genes will be completely removed from calculation.  
-- 'l_window': All SNPs within the cis-window defined by 'l_window' will be used.  
-- 's_window': All SNPs within the cis-window defined by 's_window' will be used.  
-`eGene_list` (list of str; default None):
+  - 'remove': The genes will be completely removed from calculation.  
+  - 'l_window': All SNPs within the cis-window defined by 'l_window' will be used.  
+  - 's_window': All SNPs within the cis-window defined by 's_window' will be used.  
+- `eGene_list` (list of str; default None):
 For `run_independent` only. When given, only independent eQTLs for this gene list will be calculated. By default, this is set to None, so that all genes filter by the FDR threshold are used.
 
 Other parameters in rpgQTL functions are the same as those in the corresponding functions from `tensorqtl`. Notice the rpgQTL only support for the basic cis-eQTL calculations, and thus some tensorQTL parameters are not supported (e.g. all parameters related to "interaction" from tensorqtl.cis.map_nominal are not supported in rpgQTL.run_nominal).
