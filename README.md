@@ -38,6 +38,11 @@ For details about the above files, see instruction in [tensorqtl](https://github
   - col4: gene name  
 - If `str`, this would be the path to a directory. For each file in the directory, the file name is a gene name and the file contains the regions for only that gene. The format of each file is the same as the above pandas.DataFrame.
 
+### rpgQTL functions
+`rpgQTL.run_nominal`: similar to `tensorqtl.cis.map_nominal`. Conduct the nominal run to get nominal p-values.
+`rpgQTL.run_permutation`: similar to `tensorqtl.cis.map_cis`. Conduct the permutation run to get beta-adjusted p-values.
+`rpgQTL.run_independent`: similar to `tensorqtl.cis.map_independent`. Conduct the forward-backward run to get independent eQTLs.
+
 ### rpgQTL Parameters
 `l_window` (int; default 2000000):  
 The max boundary of cis-window. Only regions within this cis-window will be consider as valid regions. You should consider trans-eqtl calling methods if your interested SNPs are located outside of this window size.  
