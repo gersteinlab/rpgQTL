@@ -11,6 +11,7 @@ $ git clone git@github.com:gaotc200/rpgQTL.git
 $ cd rpgQTL
 $ pip install -r install/requirements.txt .
 ```
+A detailed tutorial of setting up the environment from scratch could be found [here](https://github.com/gersteinlab/rpgQTL/blob/main/install/README.md). This is based on Yale HPC system but should be applicable to linux systems with nvidia GPUs.
 
 ### Requirement
 ```
