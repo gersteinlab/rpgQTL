@@ -7,7 +7,7 @@ Instead of a single parameter of the cis-window size, rpgQTL allows user to spec
 ### Install
 Install directly from this repository:
 ```
-$ git clone git@github.com:gaotc200/rpgQTL.git
+$ git clone https://github.com/gersteinlab/rpgQTL.git
 $ cd rpgQTL
 $ pip install -r install/requirements.txt .
 ```
