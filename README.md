@@ -22,23 +22,23 @@ tensorqtl
 Notice that tensorqtl depends on pandas-plink, pytorch and other packages. For furthur details, see the installing instruction in [tensorqtl](https://github.com/broadinstitute/tensorqtl) or [pytorch](https://pytorch.org/get-started/locally/).
 
 ### Example
-See `example.ipynb` for the example script.
+See `example.ipynb` for the example script. The following is based on the example but applied to the general usage of the rpgQTL package.
 
-###### Input files
+### Input files
 `plink_prefix_path`: Genotype VCF in PLINK format  
 `phenotype_df, phenotype_pos_df`: expression file  
 `covariates_df`: covariates (e.g. PEER factor, sex, etc.)  
 For details about the above files, see instruction in [tensorqtl](https://github.com/broadinstitute/tensorqtl)  
 
 `rpg_df`: `pandas.DataFrame` or `str`  
-- If `pandas.DataFrame`, this would be one large dataframe. Each row correspond to one candidate genomic region for eqtl detection of one gene. Each gene could contain multiple regions (rows). The first four columns should be:  
+- If `pandas.DataFrame`, this would be one large dataframe. Each row correspond to one candidate genomic region for eqtl detection of one gene. Each gene could contain multiple regions (rows). The required first four columns should be:  
   - col1: chromosome  
   - col2: start of the region  
   - col3: ends of the region  
   - col4: gene name  
-- If `str`, this would be the path to a directory. For each file in the directory, the file name is a gene name and the file contains the regions for that gene. The format is the same as the above pandas.DataFrame.
+- If `str`, this would be the path to a directory. For each file in the directory, the file name is a gene name and the file contains the regions for only that gene. The format of each file is the same as the above pandas.DataFrame.
 
-###### Parameters
+### rpgQTL Parameters
 `l_window` (int; default 2000000):  
 The max boundary of cis-window. Only regions within this cis-window will be consider as valid regions. You should consider trans-eqtl calling methods if your interested SNPs are located outside of this window size.  
 `s_window` (int; default 0):  
@@ -48,5 +48,7 @@ Different ways to deal with genes that have genotype and expression data, but no
 - 'remove': The genes will be completely removed from calculation.  
 - 'l_window': All SNPs within the cis-window defined by 'l_window' will be used.  
 - 's_window': All SNPs within the cis-window defined by 's_window' will be used.  
+`eGene_list` (list of str; default None):
+For `run_independent` only. When given, only independent eQTLs for this gene list will be calculated. By default, this is set to None, so that all genes filter by the FDR threshold are used.
 
-Other parameters are the same as those in the corresponding functions from `tensorqtl`.
+Other parameters in rpgQTL functions are the same as those in the corresponding functions from `tensorqtl`. Notice the rpgQTL only support for the basic cis-eQTL calculations, and thus some tensorQTL parameters are not supported (e.g. all parameters related to "interaction" from tensorqtl.cis.map_nominal are not supported in rpgQTL.run_nominal).
